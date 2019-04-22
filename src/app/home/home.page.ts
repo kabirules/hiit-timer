@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { CountdownComponent } from 'ngx-countdown';
+
 
 @Component({
   selector: 'app-home',
@@ -7,6 +9,8 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+
+  @ViewChild(CountdownComponent) counter: CountdownComponent;
 
   hiitForm = new FormGroup({
     exerciseTime: new FormControl(''),
@@ -16,10 +20,11 @@ export class HomePage {
   count: number = 0;
 
   public onSubmit() {
+    console.log(this.counter);
     this.count = this.hiitForm.get('exerciseTime').value;
-    while (this.count > 0) {
-      console.log(this.count);
-      this.count = this.count - 1;
-    }
+    this.counter.config.leftTime = this.count;
+    this.counter.config.demand = false;
+    this.counter.restart();
+    console.log(this.counter);
   }
 }

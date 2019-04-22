@@ -4,11 +4,13 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CountdownModule, Config } from 'ngx-countdown';
 
 import { HomePage } from './home.page';
 
 @NgModule({
   imports: [
+    CountdownModule,
     ReactiveFormsModule,
     CommonModule,
     FormsModule,
@@ -22,4 +24,6 @@ import { HomePage } from './home.page';
   ],
   declarations: [HomePage]
 })
-export class HomePageModule {}
+export class HomePageModule {
+ 
+}

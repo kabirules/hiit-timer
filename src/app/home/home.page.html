@@ -22,5 +22,9 @@
     <ion-item>
         <ion-label style="font-size:148px; text-align: center">{{count}}s</ion-label>
     </ion-item>    
+    <ion-item>
+        <countdown style="font-size:148px; text-align: center"
+          #counter [config]="{leftTime: 0, demand: true}">$!s!</countdown>  
+    </ion-item>
   </form>
 </ion-content>
