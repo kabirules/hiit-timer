@@ -7,10 +7,20 @@
 </ion-header>
 
 <ion-content>
-  <ion-item>
-    <ion-label>Exercise time:</ion-label>
-    <ion-input></ion-input>
-    <ion-label>Rest time:</ion-label>
-    <ion-input></ion-input>    
-  </ion-item>
+  <form  (submit)="onSubmit()"><!-- [formGroup]="hiitForm" -->
+    <ion-item>
+      <ion-label>Exercise time:</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-item>      
+      <ion-label>Rest time:</ion-label>
+      <ion-input></ion-input>    
+    </ion-item>
+    <ion-item>
+        <ion-button type="submit" color="primary">Start!</ion-button>
+    </ion-item>
+    <ion-item>
+      <ion-label style="font-size:148px; text-align: center">00s</ion-label>
+    </ion-item>
+  </form>
 </ion-content>

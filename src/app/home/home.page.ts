@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
+  public onSubmit() {
+    alert('AAA');
+  }
+
 }
