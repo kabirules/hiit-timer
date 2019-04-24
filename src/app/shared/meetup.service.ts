@@ -18,16 +18,11 @@ export class MeetUpService {
   METHOD_TOPICS = '/find/topics';
   METHOD_GROUPS = '/find/groups';
 
-  getCities() {
+  getCities(): Observable<Array<City>> {
     const url = Config.meetUpHost +
                 this.METHOD_CITIES + 
                 '?offset=0&format=json&photo-host=public&page=20&radius=50&order=size&desc=false&lat=51.52&lon=-0.24';
-    return this.http.get(url).subscribe((response)=>{
-      console.log(response);
-      const results = <Array<City>>response;
-      console.log(results);
-
-  });
+    return this.http.get<Array<City>>(url).pipe();
   /*
       .map(response => { 
         const results = <Array<City>>response.json().results;

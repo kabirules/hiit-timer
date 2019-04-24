@@ -8,7 +8,7 @@ import { MeetUpService } from '../shared/meetup.service';
 })
 export class NewPagePage implements OnInit {
 
-  constructor(private meetUpService: MeetUpService) {
+  constructor(public meetUpService: MeetUpService) {
   }
 
   ngOnInit() {
@@ -20,8 +20,12 @@ export class NewPagePage implements OnInit {
     //const lon = 12.2558; // TODO get it from GPS
     let lat: null;
     let lon: null;
-    alert(this.meetUpService.getCities());
+    this.meetUpService.getCities().subscribe(
+      (data) => {
+        console.log(data);
+      });
     /*
+    this.meetUpService.getGroups(lat, lon)
     .subscribe(
       (data) => {
         this.groups = data;
@@ -29,7 +33,7 @@ export class NewPagePage implements OnInit {
       },
       () => alert("callGroups didn't work")
     );
-    */
+    */    
   }  
 
 }
