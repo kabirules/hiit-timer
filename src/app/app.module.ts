@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MeetUpService } from './shared/meetup.service';
 import { HttpClientModule } from '@angular/common/http'; 
+import { InstaService } from './shared/insta.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
   providers: [
     HttpClientModule,
     MeetUpService,
+    InstaService,
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
