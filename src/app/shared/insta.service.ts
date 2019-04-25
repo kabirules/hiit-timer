@@ -13,9 +13,11 @@ export class InstaService {
   constructor(private http: HttpClient) {}
 
     public getToken() {
-        const url = "https://instagram.com/oauth/authorize/?client_id=" + Config.clientId + "&amp;redirect_uri=http://localhost:8100/insta-page/?&amp;response_type=token&amp;hl=en";
+        const url = "https://instagram.com/oauth/authorize/?client_id=" + 
+                    Config.clientId + 
+                    "&amp;redirect_uri=http://localhost:8100/insta-page/?&amp;response_type=token&amp;hl=en";
         console.log(url);
-        //return this.http.get<Object>(url).pipe();
+        return this.http.get<Object>(url).pipe();
         return this.http.get<Object>(url).pipe(tap(res => {
             console.log(res);
         }));
