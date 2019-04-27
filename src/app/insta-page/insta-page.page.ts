@@ -51,6 +51,8 @@ export class InstaPagePage implements OnInit {
           // An error occured
           console.log(err);
       });      
-    }      
+    }
+    // gender-api
+    this.instaService.getGender().subscribe(res => console.log(res));
   }
 }

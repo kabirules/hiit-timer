@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import Instagram from 'node-instagram';
+import { Gender } from './gender';
 
 
 @Injectable()
@@ -32,5 +33,10 @@ export class InstaService {
         this.http.get('/auth/instagram').pipe(tap(res => {
             instagram.getAuthorizationUrl(redirectUri, { scope: ['basic'] });
         }));        
+    }
+
+    // TODO -> Move to a different service gender.service.ts
+    public getGender() {
+        return this.http.get<Gender>("https://gender-api.com/get?name=elizabeth&key=" + Config.genderApiKey).pipe();
     }
 }
