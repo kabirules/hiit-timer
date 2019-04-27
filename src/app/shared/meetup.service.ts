@@ -7,6 +7,7 @@ import { Member } from "./member";
 import { Injectable } from "@angular/core";
 import { Http } from "@angular/http";
 import { Observable } from "rxjs";
+import { tap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 
 
@@ -50,7 +51,7 @@ export class MeetUpService {
     })
     .catch(this.handleErrors);                
   }
-
+*/
   // TODO send lat & long
   // Returns only groups with join_mode 'open'
   getGroups(lat: number, lon: number) {
@@ -65,9 +66,9 @@ export class MeetUpService {
                 latUrl + 
                 lonUrl;
     return this.http.get(url)
-      .map(response => { 
+      .pipe(tap(response => { 
         const result = new Array<Group>();
-        const groups = <Array<Group>>response.json();
+        const groups = <Array<Group>>response;
         groups.forEach(element => {
           if (element.join_mode === 'open') {
             //console.log(element.name);
@@ -75,10 +76,7 @@ export class MeetUpService {
           }
         });
         return result;
-      })
-      .do(data => {
-      })
-      .catch(this.handleErrors);
+      }));
   }
 
   // Make sure the member has photo
@@ -89,21 +87,19 @@ export class MeetUpService {
                 'sign=true' +
                 '&key=' + Config.API_KEY;
     return this.http.get(url)
-    .map(response => {
-      const members = <Array<Member>>response.json();
-      const result = new Array<Member>();
-      members.forEach(element => {
-        if (element.photo) {
-          result.push(element);
-        }
-      });
-      return result;
-    })
-    .do(data => {
-    })
-    .catch(this.handleErrors);                
+      .pipe(tap(response => {
+        const members = <Array<Member>>response;
+        const result = new Array<Member>();
+        members.forEach(element => {
+          if (element.photo) {
+            result.push(element);
+          }
+        });
+        return result;
+      }));            
   }
-*/
+
+
   handleErrors(error: Response) {
     console.log(JSON.stringify(error.json()));
     return Observable.throw(error);
