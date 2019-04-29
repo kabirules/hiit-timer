@@ -11,12 +11,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { MeetUpService } from './shared/meetup.service';
 import { HttpClientModule } from '@angular/common/http'; 
 import { InstaService } from './shared/insta.service';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
   providers: [
+    Geolocation,
     HttpClientModule,
     MeetUpService,
     InstaService,

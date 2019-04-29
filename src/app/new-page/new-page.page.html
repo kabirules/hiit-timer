@@ -5,9 +5,9 @@
 </ion-header>
 
 <ion-content>
-  <ion-card style="height:700px">
+  <ion-card style="height:400px">
     <ion-card-content>
-      <ion-img [src]="photo_url"></ion-img>
+      <ion-img style="height: 380px;" [src]="photo_url"></ion-img>
     </ion-card-content>
   </ion-card>
   <ion-card>
@@ -17,6 +17,7 @@
   </ion-card>  
   <ion-card>
     <ion-card-content>
+      <ion-button (click)="prevMember()" color="primary">Previous!</ion-button>
       <ion-button (click)="nextMember()" color="primary">Next!</ion-button>
     </ion-card-content>
   </ion-card>
