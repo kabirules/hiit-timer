@@ -5,10 +5,10 @@ import { Topic } from "./topic";
 import { Group } from "./group";
 import { Member } from "./member";
 import { Injectable } from "@angular/core";
-import { Http } from "@angular/http";
+import { Http, RequestOptions } from "@angular/http";
 import { Observable } from "rxjs";
 import { tap } from 'rxjs/operators';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 
 @Injectable()
@@ -97,6 +97,23 @@ export class MeetUpService {
         });
         return result;
       }));            
+  }
+
+  getAuthUrl() {
+    const url = 'https://secure.meetup.com/oauth2/authorize?client_id=' +  Config.consumerKey + '&response_type=code&redirect_uri=http://localhost:8100/meetup-login';
+    return url;
+  }
+
+  getAccessToken(code: string) {
+    const url = 'https://cors-anywhere.herokuapp.com/https://secure.meetup.com/oauth2/access';
+    let options = {headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')};
+    let body = new URLSearchParams();
+    body.set('client_id', Config.consumerKey);
+    body.set('client_secret', Config.secret);
+    body.set('grant_type', 'authorization_code');
+    body.set('redirect_uri', 'http://localhost:8100/meetup-login');
+    body.set('code', code);
+    return this.http.post(url, body, options);
   }
 
 

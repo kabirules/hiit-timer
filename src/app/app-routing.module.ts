@@ -6,6 +6,7 @@ const routes: Routes = [
   { path: 'home', loadChildren: './home/home.module#HomePageModule' },
   { path: 'new-page', loadChildren: './new-page/new-page.module#NewPagePageModule' },
   { path: 'insta-page', loadChildren: './insta-page/insta-page.module#InstaPagePageModule' },
+  { path: 'meetup-login', loadChildren: './meetup-login/meetup-login.module#MeetupLoginPageModule' },
 ];
 
 @NgModule({
