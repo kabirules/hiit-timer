@@ -113,7 +113,7 @@ export class MeetUpService {
     body.set('grant_type', 'authorization_code');
     body.set('redirect_uri', 'http://localhost:8100/meetup-login');
     body.set('code', code);
-    return this.http.post(url, body, options);
+    return this.http.post(url, body.toString(), options);
   }
 
 
