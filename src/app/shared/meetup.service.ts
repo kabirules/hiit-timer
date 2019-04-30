@@ -116,6 +116,11 @@ export class MeetUpService {
     return this.http.post(url, body.toString(), options);
   }
 
+  getDashboard(access_token: string) {
+    const url = Config.meetUpHost + '/dashboard?access_token=' + access_token;
+    return this.http.get(url);
+  }
+
 
   handleErrors(error: Response) {
     console.log(JSON.stringify(error.json()));
